@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -9,8 +9,6 @@ android {
 
     defaultConfig {
 
-        applicationId "com.orogersilva.appforusingkoin"
-
         minSdkVersion 21
         targetSdkVersion 28
 
@@ -18,10 +16,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
 
-    dataBinding {
-        enabled = true
     }
 
     buildTypes {
@@ -32,15 +27,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(':core')
-
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'org.koin:koin-android:1.0.2'
+    implementation 'org.koin:koin-androidx-viewmodel:1.0.2'
+    implementation 'org.koin:koin-core:1.0.2'
+
     testImplementation 'junit:junit:4.12'
+
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
